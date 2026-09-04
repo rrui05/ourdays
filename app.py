@@ -207,8 +207,8 @@ def finish_answer(answer: str, sources: list[dict]) -> str:
         quote = source["content"][:119] + "…" if len(source["content"]) > 120 else source["content"]
         stamp = source["time"][:16].replace("T", " ")
         citation = f"\n\n【消息#{source['id']} · {stamp} · {source['sender']}】“{quote}”"
-        answer = answer[: max(0, 2000 - len(citation))].rstrip() + citation
-    return answer[:2000]
+        answer += citation
+    return answer
 
 
 TOOLS = [
@@ -246,7 +246,6 @@ async def completion(client: httpx.AsyncClient, messages: list[dict], tool_choic
             "tools": TOOLS,
             "tool_choice": tool_choice,
             "temperature": 0.75,
-            "max_tokens": 1600,
         },
     )
     response.raise_for_status()
@@ -264,7 +263,7 @@ async def ask_ai(question: str) -> str:
                 f"你是{names}的专属聊天回忆分析师。语气必须青春、可爱、阳光，但结论要诚实。"
                 "回答前必须调用 search_chat 查证；最多调用两次。每个事实性结论都要引用工具返回的真实消息，"
                 "格式为【消息#编号 · 日期时间 · 发送者】“原文”。不得编造原文、日期或心理诊断；证据不足就直说。"
-                "使用简洁中文，最终回答不超过2000个字符。"
+                "使用简洁中文回答。"
             ),
         },
         {"role": "user", "content": question},

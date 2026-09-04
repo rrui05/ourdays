@@ -66,11 +66,12 @@ class AppTest(unittest.TestCase):
         days = {date(2026, 7, 22), date(2026, 7, 23), date(2026, 7, 25)}
         self.assertEqual(app.longest_streak(days), 2)
 
-    def test_answer_gets_a_real_citation(self):
+    def test_answer_gets_a_real_citation_without_truncation(self):
         source = {"id": 7, "time": "2026-07-22T22:00:00+08:00", "sender": "A", "content": "爱你"}
-        answer = app.finish_answer("当然有呀。", [source])
+        original = "当然有呀。" + "甜" * 2100
+        answer = app.finish_answer(original, [source])
+        self.assertTrue(answer.startswith(original))
         self.assertIn("【消息#7 · 2026-07-22 22:00 · A】“爱你”", answer)
-        self.assertLessEqual(len(answer), 2000)
 
 
 class AgentLoopTest(unittest.IsolatedAsyncioTestCase):
