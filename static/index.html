@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#3d2851">
+  <meta name="description" content="把两个人的聊天，变成一片会发光的晚霞。">
+  <title>Our Days · 我们的聊天回忆</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <div class="sky" aria-hidden="true">
+    <span class="sun"></span>
+    <span class="cloud cloud-one"></span>
+    <span class="cloud cloud-two"></span>
+    <span class="star star-one"></span>
+    <span class="star star-two"></span>
+    <span class="star star-three"></span>
+  </div>
+
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Our Days 首页">
+      <span class="brand-mark" aria-hidden="true">♡</span>
+      <span>OUR DAYS</span>
+    </a>
+    <span class="archive-status" id="archive-status" role="status" aria-live="polite">正在翻开回忆…</span>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span><span id="date-range">我们的每一天</span></p>
+        <h1 id="hero-title">把想念写进<br><em>今天的晚霞</em></h1>
+        <p class="hero-note"><span id="pair-names">两个人</span> 的聊天回忆，在这里轻轻发光。</p>
+        <div class="hero-actions">
+          <button class="button button-primary" id="open-love" type="button" disabled>
+            <span aria-hidden="true">♡</span> 看看心动暗号
+          </button>
+          <a class="button button-ghost" href="#memories">走进我们的故事</a>
+        </div>
+      </div>
+
+      <div class="message-field" id="message-field" aria-label="随机甜蜜聊天片段" aria-live="polite">
+        <div class="message-placeholder"><span></span><span></span><span></span><b>正在捡起散落的甜蜜…</b></div>
+      </div>
+
+      <a class="scroll-cue" href="#memories">
+        <span>继续往下</span>
+        <i aria-hidden="true"></i>
+      </a>
+    </section>
+
+    <section class="section memories" id="memories" aria-labelledby="memory-title">
+      <div class="section-heading reveal">
+        <p class="kicker">LOVE IN NUMBERS</p>
+        <h2 id="memory-title">原来，我们说了这么多话</h2>
+        <p>那些看似平常的碎碎念，连起来就是我们认真相爱的证据。</p>
+      </div>
+
+      <div class="fact-grid reveal" aria-label="聊天概览">
+        <article class="fact-card feature">
+          <span class="fact-icon" aria-hidden="true">✦</span>
+          <strong id="total-messages">—</strong>
+          <p>条来来回回的消息</p>
+        </article>
+        <article class="fact-card">
+          <span class="fact-icon" aria-hidden="true">☼</span>
+          <strong id="active-days">—</strong>
+          <p>天都有彼此的声音</p>
+        </article>
+        <article class="fact-card">
+          <span class="fact-icon" aria-hidden="true">∞</span>
+          <strong id="longest-streak">—</strong>
+          <p>天最长连续聊天</p>
+        </article>
+        <article class="fact-card">
+          <span class="fact-icon" aria-hidden="true">♥</span>
+          <strong id="peak-total">—</strong>
+          <p id="peak-caption">最热闹的一天</p>
+        </article>
+      </div>
+
+      <article class="glass-card together-card reveal" aria-labelledby="together-title">
+        <div class="card-heading">
+          <div>
+            <p class="kicker">SIDE BY SIDE</p>
+            <h3 id="together-title">两个人的碎碎念</h3>
+          </div>
+          <p id="couple-insight">每一次发送，都是一句“我在”。</p>
+        </div>
+        <div class="people-grid">
+          <section class="person-card self-person" aria-labelledby="self-name">
+            <div class="person-title">
+              <span class="avatar" id="self-avatar" aria-hidden="true">我</span>
+              <div><small>这一边</small><h4 id="self-name">我</h4></div>
+            </div>
+            <dl>
+              <div><dt>发送消息</dt><dd id="self-messages">—</dd></div>
+              <div><dt>写下文字</dt><dd><span id="self-characters">—</span> 字</dd></div>
+            </dl>
+          </section>
+          <div class="ampersand" aria-hidden="true">&amp;</div>
+          <section class="person-card partner-person" aria-labelledby="partner-name">
+            <div class="person-title">
+              <span class="avatar" id="partner-avatar" aria-hidden="true">你</span>
+              <div><small>那一边</small><h4 id="partner-name">你</h4></div>
+            </div>
+            <dl>
+              <div><dt>发送消息</dt><dd id="partner-messages">—</dd></div>
+              <div><dt>写下文字</dt><dd><span id="partner-characters">—</span> 字</dd></div>
+            </dl>
+          </section>
+        </div>
+        <div class="comparison-bars" aria-label="双方消息和字数占比">
+          <div class="comparison-row">
+            <div><span>消息条数</span><span id="message-ratio">—</span></div>
+            <div class="split-track"><span id="message-self-bar"></span><span id="message-partner-bar"></span></div>
+          </div>
+          <div class="comparison-row">
+            <div><span>聊天字数</span><span id="character-ratio">—</span></div>
+            <div class="split-track"><span id="character-self-bar"></span><span id="character-partner-bar"></span></div>
+          </div>
+          <div class="bar-legend"><span class="self-key" id="self-legend">我</span><span class="partner-key" id="partner-legend">你</span></div>
+        </div>
+      </article>
+
+      <div class="chart-grid">
+        <article class="glass-card chart-card reveal" aria-labelledby="trend-title">
+          <div class="card-heading compact">
+            <div><p class="kicker">EVERY DAY</p><h3 id="trend-title">聊天心跳线</h3></div>
+            <div class="chart-legend" aria-hidden="true"><span class="self-key">这一边</span><span class="partner-key">那一边</span></div>
+          </div>
+          <div class="trend-wrap">
+            <svg id="trend-chart" viewBox="0 0 760 280" role="img" aria-labelledby="trend-title trend-description" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="self-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#ffe4bd" stop-opacity=".36"/><stop offset="1" stop-color="#ffe4bd" stop-opacity="0"/></linearGradient>
+                <linearGradient id="partner-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#ff8fa3" stop-opacity=".34"/><stop offset="1" stop-color="#ff8fa3" stop-opacity="0"/></linearGradient>
+              </defs>
+              <g class="chart-gridlines" aria-hidden="true"><line x1="42" x2="742" y1="32" y2="32"/><line x1="42" x2="742" y1="134" y2="134"/><line x1="42" x2="742" y1="236" y2="236"/></g>
+              <path class="trend-area self-area" id="self-area"></path>
+              <path class="trend-area partner-area" id="partner-area"></path>
+              <path class="trend-line self-line" id="self-line"></path>
+              <path class="trend-line partner-line" id="partner-line"></path>
+              <g class="chart-labels" aria-hidden="true"><text id="trend-max" x="34" y="37" text-anchor="end">—</text><text id="trend-start" x="42" y="263">—</text><text id="trend-end" x="742" y="263" text-anchor="end">—</text></g>
+            </svg>
+            <p class="sr-only" id="trend-description">聊天趋势加载中</p>
+          </div>
+        </article>
+
+        <article class="glass-card chart-card reveal" aria-labelledby="period-title">
+          <div class="card-heading compact">
+            <div><p class="kicker">DAY &amp; NIGHT</p><h3 id="period-title">想念出没时间</h3></div>
+          </div>
+          <div class="period-chart" id="period-chart" aria-label="双方分时段消息数量"></div>
+          <p class="period-note" id="period-note">看看我们最爱在哪个时刻聊天。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section search-section" aria-labelledby="search-title">
+      <div class="search-shell reveal">
+        <div class="search-copy">
+          <p class="kicker">OUR SECRET WORD</p>
+          <h2 id="search-title">搜一个只属于我们的词</h2>
+          <p>“宝宝”、“晚安”或某句小暗号，看看是谁悄悄说得更多。</p>
+        </div>
+        <form class="search-form" id="search-form">
+          <label for="search-input">想找什么？</label>
+          <div class="input-row">
+            <input id="search-input" name="q" type="search" maxlength="40" placeholder="比如：宝宝" autocomplete="off" required>
+            <button class="button button-primary" id="search-button" type="submit">开始寻找</button>
+          </div>
+          <div class="quick-words" aria-label="快捷关键词">
+            <span>试试看</span>
+            <button type="button" data-word="宝宝">宝宝</button>
+            <button type="button" data-word="想你">想你</button>
+            <button type="button" data-word="晚安">晚安</button>
+          </div>
+        </form>
+        <div class="search-result" id="search-result" hidden aria-live="polite">
+          <p class="result-eyebrow">关于「<strong id="searched-word"></strong>」</p>
+          <div class="result-people">
+            <article><span class="result-dot self-dot"></span><h3 id="search-self-name">我</h3><strong id="search-self-count">0</strong><p>次被说起 · <span id="search-self-messages">0</span> 条消息</p></article>
+            <span class="result-vs" aria-hidden="true">VS</span>
+            <article><span class="result-dot partner-dot"></span><h3 id="search-partner-name">你</h3><strong id="search-partner-count">0</strong><p>次被说起 · <span id="search-partner-messages">0</span> 条消息</p></article>
+          </div>
+          <p class="result-note" id="search-note"></p>
+        </div>
+        <p class="form-status" id="search-status" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="section ai-section" aria-labelledby="ai-title">
+      <div class="ai-glow" aria-hidden="true"></div>
+      <div class="ai-shell reveal">
+        <div class="ai-heading">
+          <div class="ai-orb" aria-hidden="true"><span>✦</span></div>
+          <div><p class="kicker">AI MEMORY KEEPER</p><h2 id="ai-title">问问我们的回忆</h2></div>
+        </div>
+        <p class="ai-intro">它会翻阅真实聊天片段，再带着原话回答你。可以问：“我们有哪些很甜的日常？”</p>
+        <form class="ai-form" id="ai-form">
+          <label for="ai-question">你想从回忆里知道什么？</label>
+          <textarea id="ai-question" name="question" maxlength="500" rows="4" placeholder="写下你的问题…" required></textarea>
+          <div class="ai-form-foot"><span><b id="question-count">0</b> / 500</span><button class="button button-light" id="ask-button" type="submit"><span aria-hidden="true">✦</span><span id="ask-label">交给回忆回答</span></button></div>
+        </form>
+
+        <div class="ai-thinking" id="ai-thinking" hidden role="status" aria-live="polite">
+          <div class="thinking-visual" aria-hidden="true"><i></i><i></i><i></i><span>♥</span></div>
+          <div><strong id="thinking-status">正在翻开聊天回忆…</strong><p>正在寻找真实消息作为答案依据</p></div>
+        </div>
+
+        <article class="ai-answer" id="ai-answer" hidden tabindex="-1">
+          <header><span class="answer-spark" aria-hidden="true">✦</span><div><p>来自回忆的回答</p><small id="answer-model"></small></div></header>
+          <p id="answer-text"></p>
+        </article>
+        <p class="form-status light" id="ai-status" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer><span aria-hidden="true">♡</span><p>所有日常都有回音，所有想念都有归处。</p></footer>
+
+  <dialog class="access-dialog" id="access-dialog" aria-labelledby="access-title" aria-describedby="access-description">
+    <div class="access-card">
+      <div class="access-heart" aria-hidden="true"><span>♡</span></div>
+      <p class="kicker">JUST FOR US</p>
+      <h2 id="access-title">晚霞在等你</h2>
+      <p id="access-description">输入属于我们的访问密码，再一起翻开这些闪闪发光的日子。</p>
+      <form id="access-form">
+        <label for="access-password">访问密码</label>
+        <input id="access-password" name="password" type="password" autocomplete="current-password" placeholder="轻轻告诉我…" required>
+        <button class="button button-primary" id="access-button" type="submit">走进我们的回忆</button>
+        <p id="access-status" role="alert" aria-live="polite"></p>
+      </form>
+      <small>密码只保留在当前标签页中</small>
+    </div>
+  </dialog>
+
+  <dialog class="love-dialog" id="love-dialog" aria-labelledby="love-title">
+    <form method="dialog"><button class="dialog-close" aria-label="关闭心动暗号统计">×</button></form>
+    <div class="dialog-heading"><span aria-hidden="true">♡</span><p class="kicker">SWEET LITTLE THINGS</p><h2 id="love-title">我们的心动暗号</h2><p>一句句喜欢，被时间认真地记住了。</p></div>
+    <div class="dialog-legend"><span class="self-key" id="love-self-name">我</span><span class="partner-key" id="love-partner-name">你</span></div>
+    <div class="love-list" id="love-list"></div>
+    <p class="dialog-note">统计为关键词在聊天文字中出现的次数。</p>
+  </dialog>
+
+  <script src="/static/app.js" defer></script>
+</body>
+</html>

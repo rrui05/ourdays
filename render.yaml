@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: ourdays
+    runtime: python
+    plan: free
+    region: singapore
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /
+    envVars:
+      - key: APIKEY
+        sync: false
+      - key: SITE_PASSWORD
+        sync: false
+      - key: CHAT_DATA_FILE
+        value: /etc/secrets/chat.json.xz.b64
